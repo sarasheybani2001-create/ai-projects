@@ -1,192 +1,1129 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
-<title>Sara | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090a16">
+<meta name="description" content="Sara Sheybani — exploring artificial intelligence, mathematics, technology, and the occasional questionable assumption.">
+
+<title>Sara Sheybani — Beyond the Obvious</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
 <style>
-body {
+:root {
+  --bg: #090a16;
+  --surface: rgba(20,22,39,.78);
+  --surface-light: rgba(31,33,54,.8);
+  --blue: #a7c9f5;
+  --lavender: #c4a9f4;
+  --pink: #e7a9cb;
+  --text: #f2eff8;
+  --muted: #a09eb4;
+  --border: rgba(190,180,230,.15);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', Arial, sans-serif;
+}
+
+* {
   margin: 0;
-  font-family: Arial;
-  background: #070707;
-  color: #eaeaea;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.8;
   overflow-x: hidden;
 }
 
-/* 🌌 STRONGER AI BACKGROUND */
-body::before {
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+::selection {
+  background: var(--lavender);
+  color: #090a16;
+}
+
+button {
+  font: inherit;
+}
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cloud {
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  filter: blur(115px);
+  opacity: .17;
+  animation: drift 22s ease-in-out infinite alternate;
+}
+
+.cloud.one {
+  background: #477dcf;
+  top: -230px;
+  left: -180px;
+}
+
+.cloud.two {
+  background: #9664d5;
+  top: 20%;
+  right: -280px;
+  animation-delay: -7s;
+}
+
+.cloud.three {
+  background: #d16baf;
+  bottom: -300px;
+  left: 25%;
+  animation-delay: -12s;
+}
+
+.cloud.four {
+  background: #5275bd;
+  bottom: 10%;
+  right: 20%;
+  opacity: .09;
+  animation-delay: -4s;
+}
+
+@keyframes drift {
+  from {
+    transform: translate(0,0) scale(1);
+  }
+  to {
+    transform: translate(65px,45px) scale(1.2);
+  }
+}
+
+body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255,215,0,0.12), transparent 30%),
-    radial-gradient(circle at 80% 40%, rgba(255,215,0,0.08), transparent 35%),
-    radial-gradient(circle at 50% 80%, rgba(255,255,255,0.05), transparent 40%),
-    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-
-  background-size: 250px 250px, 300px 300px, 400px 400px, 50px 50px, 50px 50px;
-  opacity: 0.6;
   z-index: -1;
-}
-
-header {
-  text-align: center;
-  padding: 90px 20px;
-}
-
-header h1 {
-  font-size: 52px;
-  margin: 0;
-  letter-spacing: 2px;
-}
-
-header p {
-  color: gold;
-  letter-spacing: 4px;
-  margin-top: 10px;
+  pointer-events: none;
+  opacity: .12;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 65px 65px;
 }
 
 .container {
-  max-width: 900px;
+  width: 82%;
+  max-width: 1120px;
   margin: auto;
-  padding: 20px;
 }
 
-/* ✨ CARDS (NOW ALIVE) */
-.card {
-  background: rgba(20,20,20,0.85);
-  border-left: 2px solid gold;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 14px;
-  backdrop-filter: blur(6px);
-
-  transition: all 0.3s ease;
+section {
+  padding: 110px 0;
 }
 
-/* 🖤 HOVER EFFECT */
-.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 25px rgba(255,215,0,0.15);
-  border-left: 2px solid white;
+.section-label {
+  color: var(--lavender);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
 }
 
-h2 {
-  color: gold;
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(34px,5vw,49px);
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 35px;
 }
 
-.tag {
+.gradient-text {
+  background: linear-gradient(110deg, var(--blue), var(--lavender), var(--pink));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.line {
+  height: 1px;
+  width: 55px;
+  background: linear-gradient(90deg,var(--blue),var(--pink));
+  margin: 22px 0;
+}
+
+/* Navigation */
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 76px;
+  padding: 0 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background: rgba(9,10,22,.78);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 27px;
+  letter-spacing: 2px;
+  color: var(--blue);
+}
+
+.logo span {
+  color: var(--pink);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: var(--blue);
+}
+
+.nav-contact {
+  padding: 9px 16px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.menu-toggle {
+  display: none;
+  border: 1px solid var(--border);
+  color: var(--blue);
+  background: transparent;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+
+/* Hero */
+
+.hero {
+  min-height: 96vh;
+  padding: 160px 10% 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 900px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--blue);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--pink);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(54px,9vw,105px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+
+.hero h1 em {
+  font-weight: 500;
+}
+
+.hero-description {
+  max-width: 580px;
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2.1;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 38px;
+}
+
+.btn {
   display: inline-block;
-  background: #1f1f1f;
-  padding: 6px 10px;
-  margin: 5px;
-  border-radius: 8px;
-  font-size: 12px;
-  color: gold;
-  transition: 0.3s;
+  padding: 13px 23px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: .3s;
 }
 
-/* ✨ TAG HOVER */
-.tag:hover {
-  transform: scale(1.1);
-  background: #2a2a2a;
-  color: white;
+.btn-primary {
+  background: linear-gradient(110deg,#a7c9f5,#c4a9f4);
+  color: #101020;
 }
+
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(167,201,245,.2);
+}
+
+.btn-secondary {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.hero-bottom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 90px;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--blue);
+  border-radius: 50%;
+  box-shadow: 0 0 14px var(--blue);
+}
+
+/* About */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr .8fr;
+  gap: 65px;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2.2;
+  margin-bottom: 19px;
+}
+
+.about-text strong {
+  color: var(--blue);
+  font-weight: 500;
+}
+
+.about-quote {
+  padding: 28px;
+  border-left: 1px solid var(--lavender);
+  background: linear-gradient(140deg,rgba(155,127,212,.11),rgba(120,150,220,.025));
+  border-radius: 0 10px 10px 0;
+}
+
+.about-quote p {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.7;
+}
+
+.about-quote small {
+  display: block;
+  margin-top: 22px;
+  color: var(--pink);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Focus */
+
+.focus-section {
+  background: rgba(255,255,255,.018);
+  border-top: 1px solid rgba(255,255,255,.045);
+  border-bottom: 1px solid rgba(255,255,255,.045);
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+}
+
+.focus-card {
+  padding: 30px 25px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  transition: .35s;
+}
+
+.focus-card:hover {
+  transform: translateY(-7px);
+  background: var(--surface-light);
+  border-color: rgba(167,201,245,.4);
+}
+
+.focus-number {
+  font-family: var(--serif);
+  font-size: 31px;
+  color: var(--lavender);
+}
+
+.focus-card h3 {
+  font-size: 15px;
+  margin: 16px 0 10px;
+  font-weight: 500;
+}
+
+.focus-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+}
+
+/* Interests */
+
+.interests-intro {
+  max-width: 600px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+}
+
+.interest-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.interest {
+  padding: 10px 17px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: #c7c3e4;
+  background: rgba(255,255,255,.025);
+  font-size: 11px;
+  transition: .3s;
+}
+
+.interest:hover {
+  background: rgba(167,201,245,.13);
+  color: var(--blue);
+  border-color: rgba(167,201,245,.4);
+  transform: translateY(-3px);
+}
+
+/* Projects */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 18px;
+}
+
+.project-card {
+  min-height: 265px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg,rgba(28,29,50,.9),rgba(14,15,29,.9));
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  transition: .35s;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  right: -100px;
+  bottom: -100px;
+  background: radial-gradient(circle,rgba(171,143,230,.18),transparent 70%);
+  transition: .4s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(196,169,244,.5);
+}
+
+.project-card:hover::after {
+  transform: scale(1.5);
+}
+
+.project-type {
+  color: var(--blue);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.project-card h3 {
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 500;
+  margin: 20px 0 12px;
+}
+
+.project-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+  max-width: 420px;
+}
+
+.project-status {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--pink);
+  font-size: 9px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+}
+
+/* Journey */
 
 .timeline {
-  border-left: 2px solid gold;
-  padding-left: 15px;
+  border-left: 1px solid rgba(196,169,244,.4);
+  margin-left: 8px;
+  padding-left: 32px;
 }
 
-.timeline div {
-  margin-bottom: 10px;
+.timeline-item {
+  position: relative;
+  padding-bottom: 43px;
 }
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--lavender);
+  left: -37px;
+  top: 10px;
+  box-shadow: 0 0 13px rgba(196,169,244,.5);
+}
+
+.timeline-item span {
+  color: var(--pink);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.timeline-item h3 {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-weight: 500;
+  margin: 9px 0;
+}
+
+.timeline-item p {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2.1;
+}
+
+/* Philosophy */
+
+.philosophy {
+  text-align: center;
+  padding: 115px 8%;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse at 20% 50%,rgba(90,122,190,.12),transparent 50%),
+    radial-gradient(ellipse at 80% 50%,rgba(180,115,175,.11),transparent 50%);
+}
+
+.philosophy h2 {
+  max-width: 850px;
+  margin: auto;
+  font-family: var(--serif);
+  font-size: clamp(32px,5.5vw,55px);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.philosophy h2 span {
+  font-style: italic;
+  color: var(--pink);
+}
+
+.philosophy p {
+  margin-top: 25px;
+  color: var(--blue);
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+/* Contact */
 
 .contact {
   text-align: center;
-  padding: 40px;
-  color: #aaa;
-  font-size: 14px;
+  padding: 125px 20px;
+}
+
+.contact-description {
+  max-width: 490px;
+  margin: 0 auto 32px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2.1;
+}
+
+.contact-email {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: clamp(17px,3vw,25px);
+  color: var(--blue);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 7px;
+  transition: .3s;
+}
+
+.contact-email:hover {
+  color: var(--pink);
+  border-color: var(--pink);
+}
+
+/* Footer */
+
+footer {
+  padding: 27px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.06);
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+footer a {
+  color: var(--lavender);
+}
+
+/* Animations */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width:760px) {
+  nav {
+    padding: 0 6%;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    padding: 28px;
+    flex-direction: column;
+    gap: 22px;
+    background: #101020;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .hero {
+    min-height: 85vh;
+    padding: 140px 7% 60px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .hero-bottom {
+    margin-top: 60px;
+  }
+
+  .container {
+    width: 86%;
+  }
+
+  section {
+    padding: 80px 0;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .focus-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    min-height: 230px;
+  }
+
+  footer {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cloud {
+    opacity: .12;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 </style>
-
 </head>
 
 <body>
 
-<header>
-  <h1>HELLO , I'm Sara</h1>
-  <p>AI Future Engineer • ambitious • Not a quiter</p>
+<div class="ambient">
+  <div class="cloud one"></div>
+  <div class="cloud two"></div>
+  <div class="cloud three"></div>
+  <div class="cloud four"></div>
+</div>
+
+<nav>
+  <a href="#home" class="logo">S<span>.</span></a>
+
+  <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+    ☰
+  </button>
+
+  <div class="nav-links" id="nav-links">
+    <a href="#about">ABOUT</a>
+    <a href="#focus">FOCUS</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#journey">JOURNEY</a>
+    <a href="#contact" class="nav-contact">CONTACT</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-content reveal">
+
+    <div class="eyebrow">Mathematics · Technology · Curiosity</div>
+
+    <h1>
+      Hello, I'm Sara.<br>
+      I tend to <em class="gradient-text">question things.</em>
+    </h1>
+
+    <p class="hero-description">
+      An aspiring AI engineer, analytical thinker, and professional
+      overthinker (the productive kind, hopefully).
+      Interested in mathematics, artificial intelligence,
+      human behavior, and understanding why things work the way they do.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#about" class="btn btn-primary">A little about me ↗</a>
+      <a href="#projects" class="btn btn-secondary">See what I'm working on</a>
+    </div>
+
+  </div>
+
+  <div class="hero-bottom">
+    <span class="status-dot"></span>
+    Currently learning, questioning & figuring things out
+  </div>
 </header>
 
-<div class="container">
+<section id="about">
+  <div class="container reveal">
 
-  <div class="card">
-    <h2>About Me</h2>
-    <p>
-      I am a high school student who has been naturally curious since childhood. Yes i was one of the annoying kids and could never accept something easily. However, Instead of ignoring that curiosity I turned it into learning, studying, and building small systems that help me understand the world better so i could stop argueing with adults (however i still do that sometimes).
+    <div class="section-label">01 / The person behind the screen</div>
+    <h2 class="section-title">A little curiosity. A lot of questions.</h2>
 
-I am still learning, but I learn quickly when something feels meaningful. Artificial Intelligence, to me, is not just a subject but it feels like a direction that connects logic, creativity, and real human impact. my favorite things togheter...
-    </p>
-  </div>
+    <div class="about-grid">
 
-  <div class="card">
-    <h2>Goal</h2>
-    <p>
-    My goal is to build AI systems that understand human behavior and improve learning and education, especially for students like myself. I want to contribute to making educational environments more supportive, more intelligent, and more suitable for the next generation, especially Gen Z (you might say im a little baiesed but im not don't worry).
+      <div class="about-text">
+        <p>
+          I've been naturally curious for as long as I can remember.
+          I was probably one of those children who couldn't accept an
+          explanation without asking five more questions.
+          Apparently, I never grew out of that. Sorry to everyone involved.
+        </p>
 
-I also want to increase opportunities for success while reducing unnecessary pressure, stress, and emotional struggle in learning systems or any other systems if i could.
-    </p>
-  </div>
+        <p>
+          Over time, that curiosity developed into an interest in
+          <strong>logic, mathematics, technology, and human behavior.</strong>
+          I like understanding how things work, connecting seemingly
+          unrelated ideas, and occasionally questioning things that
+          everyone else has already agreed to accept.
+        </p>
 
-  <div class="card">
-    <h2>Interests</h2>
-    <span class="tag">AI</span>
-    <span class="tag">Mathematics</span>
-    <span class="tag">Languages</span>
-    <span class="tag">Music</span>
-    <span class="tag">Writing</span>
-    <span class="tag">Coding</span>
-    <span class="tag">Sports</span>
-    <span class="tag">Art</span>
-  </div>
+        <p>
+          Artificial intelligence caught my attention because it
+          combines several things I genuinely enjoy: analytical thinking,
+          creativity, problem-solving, and a rather interesting
+          opportunity to build things that actually matter.
+        </p>
 
-  <div class="card">
-    <h2>Journey</h2>
-    <div class="timeline">
-    <p>
-        I have always been an analytical thinker, got it from my parents. Since childhood, I naturally leaned toward logic, patterns, and problem-solving. Over time, this curiosity developed into a deeper interest in mathematics, which eventually became one of my strongest and most important academic directions.
+        <p>
+          I'm still learning, experimenting, and figuring out where
+          I want to take all of this. I don't have everything figured out.
+          Honestly, that would make things a little boring.
+        </p>
 
-Right now, I am still at the beginning of my journey, but I am building it step by step with long term focus and consistency.
-    </p>
+      </div>
+
+      <aside class="about-quote">
+        <p>
+          "The interesting questions are usually the ones
+          nobody bothered to ask."
+        </p>
+        <small>Something I tend to believe</small>
+      </aside>
+
     </div>
   </div>
+</section>
 
-  <div class="card">
-    <h2>Projects</h2>
-    <ul>
-      <li>Study planner AI</li>
-      <li>AI Chatbot</li>
-      <li>Personal Portfolio Website</li>
-    </ul>
+<section class="focus-section" id="focus">
+  <div class="container reveal">
+
+    <div class="section-label">02 / Things that keep my brain busy</div>
+    <h2 class="section-title">Current areas of interest.</h2>
+
+    <div class="focus-grid">
+
+      <article class="focus-card">
+        <div class="focus-number">01</div>
+        <h3>Artificial Intelligence</h3>
+        <p>
+          Understanding intelligent systems, machine learning,
+          automation, and how technology can become genuinely
+          useful rather than just another impressive buzzword.
+        </p>
+      </article>
+
+      <article class="focus-card">
+        <div class="focus-number">02</div>
+        <h3>Mathematics & Logic</h3>
+        <p>
+          Patterns, abstract thinking, problem-solving, and
+          the satisfying feeling of finally understanding
+          something that looked impossible five minutes ago.
+        </p>
+      </article>
+
+      <article class="focus-card">
+        <div class="focus-number">03</div>
+        <h3>Education & Human Learning</h3>
+        <p>
+          Exploring how people learn, why traditional systems
+          don't always work, and whether we could do a
+          slightly better job at preparing students for life.
+        </p>
+      </article>
+
+    </div>
+
   </div>
+</section>
 
-  <div class="card">
-    <h2>Focus</h2>
-    <p>
-      I am working on transitioning from learning isolated tools to building complete systems that function in real environments.
+<section id="interests">
+  <div class="container reveal">
 
-My long term ambition is to become an engineer who creates systems that are not only functional, but meaningful. Systems that can genuinely support people, solve real problems, and improve quality of life in subtle but important ways.
+    <div class="section-label">03 / Outside the syllabus</div>
+    <h2 class="section-title">A mind with multiple tabs open.</h2>
+
+    <p class="interests-intro">
+      I like exploring different subjects and learning things
+      that don't necessarily belong together. A little variety
+      never hurt anyone. Except perhaps my browser's open tabs.
     </p>
+
+    <div class="interest-list">
+      <span class="interest">Artificial Intelligence</span>
+      <span class="interest">Mathematics</span>
+      <span class="interest">Programming</span>
+      <span class="interest">Languages</span>
+      <span class="interest">Creative Writing</span>
+      <span class="interest">Music</span>
+      <span class="interest">Psychology</span>
+      <span class="interest">Art & Design</span>
+      <span class="interest">Sports</span>
+      <span class="interest">Philosophy</span>
+    </div>
+
   </div>
+</section>
 
+<section class="focus-section" id="projects">
+  <div class="container reveal">
+
+    <div class="section-label">04 / Ideas in progress</div>
+    <h2 class="section-title">Enough thinking. Time to build.</h2>
+
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <div class="project-type">AI · Education</div>
+        <h3>Study Planner AI</h3>
+        <p>
+          Exploring how an intelligent planning system could
+          help students organize their learning, understand
+          their habits, and build more effective study routines.
+          Because studying shouldn't require a second degree
+          in time management.
+        </p>
+        <span class="project-status">Concept / In development</span>
+      </article>
+
+      <article class="project-card">
+        <div class="project-type">AI · Experimentation</div>
+        <h3>AI Chatbot</h3>
+        <p>
+          Exploring conversational interfaces, intelligent
+          responses, and the fundamentals of building
+          interactive AI-powered applications.
+          A small step into a rather big field.
+        </p>
+        <span class="project-status">Learning / Experimentation</span>
+      </article>
+
+      <article class="project-card">
+        <div class="project-type">Web · Personal Development</div>
+        <h3>Personal Portfolio</h3>
+        <p>
+          This little corner of the internet.
+          A place to document projects, ideas, interests,
+          and the occasional change of direction.
+          Hopefully, with better organization than my desktop.
+        </p>
+        <span class="project-status">Currently developing</span>
+      </article>
+
+      <article class="project-card">
+        <div class="project-type">Writing · Education · AI</div>
+        <h3>Rethinking Education</h3>
+        <p>
+          An essay exploring traditional education,
+          student motivation, artificial intelligence,
+          and why blaming the newest technology might
+          be a convenient way to avoid older questions.
+        </p>
+        <span class="project-status">Writing / Research</span>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="journey">
+  <div class="container reveal">
+
+    <div class="section-label">05 / The ongoing experiment</div>
+    <h2 class="section-title">Where I've been. Where I'm going.</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <span>The beginning</span>
+        <h3>Asking too many questions.</h3>
+        <p>
+          A natural habit of questioning explanations,
+          looking for patterns, and trying to understand
+          how things work. It eventually became more than
+          just an annoying personality trait.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <span>Academic development</span>
+        <h3>Mathematics found its way in.</h3>
+        <p>
+          Developing an interest in mathematical thinking,
+          logic, and problem-solving. The more I learned,
+          the more I noticed how many connections existed
+          between different fields.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <span>The current chapter</span>
+        <h3>From understanding to building.</h3>
+        <p>
+          Working toward stronger technical skills,
+          exploring programming and artificial intelligence,
+          and turning ideas into actual projects instead
+          of leaving them as interesting thoughts.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <span>The long-term direction</span>
+        <h3>Technology with a purpose.</h3>
+        <p>
+          My ambition is to become an engineer who develops
+          intelligent systems that solve real problems,
+          particularly in education and human learning.
+          Something useful, not just something that looks
+          impressive in a presentation.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="philosophy">
+  <h2>
+    I don't just want to understand
+    how the world works.
+    I want to question how it
+    <span>could work better.</span>
+  </h2>
+  <p>THINK DIFFERENTLY. BUILD SOMETHING MEANINGFUL.</p>
 </div>
 
-<div class="contact">
-  Contact: sarasheybani2001@gmail.com
-</div>
+<section class="contact" id="contact">
+
+  <div class="section-label">06 / The conversation corner</div>
+
+  <h2 class="section-title">Have an interesting idea?</h2>
+
+  <p class="contact-description">
+    Whether it's technology, mathematics, education,
+    creative projects, or a question that leads to
+    an unnecessarily long discussion, I'm always
+    interested in exchanging ideas.
+  </p>
+
+  <a class="contact-email"
+     href="mailto:sarasheybani2001@gmail.com">
+     sarasheybani2001@gmail.com
+  </a>
+
+</section>
+
+<footer>
+  <span>© 2026 Sara Sheybani</span>
+  <span>Built with curiosity and probably too many questions(don't judge me).</span>
+  <a href="#home">BACK TO TOP ↑</a>
+</footer>
+
+<script>
+const menuButton = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuButton.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded', isOpen);
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  });
+});
+
+const revealElements = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  revealElements.forEach(element => observer.observe(element));
+} else {
+  revealElements.forEach(element => element.classList.add('visible'));
+}
+</script>
 
 </body>
 </html>
